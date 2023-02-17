@@ -1,0 +1,43 @@
+<style>
+    p,#submit,#register,#danger{
+        margin-left: 280px;
+        margin-right: 300px;
+        margin-bottom: 20px;
+    }
+    #signIn{
+        margin-left: 280px;
+        font-family: "Arial Black";
+        font-style: italic;
+        margin-top: 35px;
+    }
+    #containerid{
+        margin-top: 20px;
+    }
+
+</style>
+
+<div class="table table-secondary table-striped table-hover table-bordered border-success" id="containerid" xmlns:th="http://www.thymeleaf.org">
+    <form class="form-signin" method="post" action="/login">
+        <h2 class="form-signin-heading" id="signIn">Sign in</h2>
+        <p>
+            <label for="username" class="sr-only">Username</label>
+            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required=""
+                   autofocus="">
+        </p>
+        <p>
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                   required="">
+        </p>
+
+        <div th:text="${param.error}" class="text-danger" id="danger"></div>
+
+        <button id="submit" class="btn btn-sm btn-info" type="submit">Sign in</button>
+    </form>
+
+    <div class="alert alert-success alert-dismissible fade show" id="register" role="alert">
+    <h4 class="alert-heading">Not Registered Yet?</h4>
+    Register for free <a href="/register" class="alert-link">here</a>
+    </div>
+
+</div>

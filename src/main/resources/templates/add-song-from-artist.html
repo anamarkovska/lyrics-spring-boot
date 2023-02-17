@@ -1,0 +1,104 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Add Song From Artist</h1>
+        </div>
+    </section>
+
+    <style>
+        .form-group,#submit,#genre{
+            margin-left:150px;
+        }
+    </style>
+
+    <div class="table table-info table-striped table-hover table-bordered border-success">
+        <div class="row">
+            <div class="col-md-5">
+                <form th:action="@{'/artists/add-song/{id}' (id=${artist?.getId()})} " th:method="POST">
+                              <input id="id" type="hidden" name="id" th:value="(${artist} != null ? ${artist.getId()} : '')">
+                    <div class="form-group">
+                        <label for="name">Song Name</label>
+                        <input type="text"
+                               class="form-control"
+                               id="name"
+                               name="name"
+                               th:value="''"
+                               required
+                               placeholder="Song Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="sec">Duration</label>
+                        <input type="text"
+                               class="form-control"
+                               id="sec"
+                               name="sec"
+                               th:value="''"
+                               placeholder="Duration">
+                    </div>
+
+
+                    <div id="genre">
+                        <label>Genre</label><br/>
+                        <select id="f4" name="genreId" class="form-control">
+                            <!-- For each type you should have one <option> like below  -->
+                            <option th:each="gen: ${genres}" th:value="${gen.getId()}" th:text="${gen.getName()}" > </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Artist</label>
+                        <select name="artistId" class="form-control">
+                            <option
+                                    th:value="${artist.getId()}"
+                                    th:text="${artist.getName()}">
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Album</label>
+                        <select name="albumId" class="form-control">
+                            <option
+                                    th:each="album : ${artist.getAlbum()}"
+                                    th:value="${album.getId()}"
+                                    th:text="${album.getName()}">
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Rating</label>
+                        <select name="ratingId" class="form-control">
+                            <option th:if="${song} != null"
+                                    th:selected="${song.getRating() != null &&
+                                song.getRating().getId() == rating.getId()}"
+                                    th:each="rating : ${ratings}"
+                                    th:value="${rating.getId()}"
+                                    th:text="${rating.getRating()}">
+                            </option>
+                            <option th:if="${song} == null"
+                                    th:each="rating : ${ratings}"
+                                    th:value="${rating.getId()}"
+                                    th:text="${rating.getRating()}">
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lyrics">Lyrics</label>
+                        <input type="text"
+                               class="form-control"
+                               id="lyrics"
+                               name="lyrics"
+                               th:value="''"
+                               placeholder="Lyrics">
+                    </div>
+                    <button id="submit" type="submit" class="btn btn-info">Submit</button>
+                    <a type="button" class="btn btn-light" th:href="@{'/artists/{id}' (id=${artist?.getId()})}">Back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</th:block>

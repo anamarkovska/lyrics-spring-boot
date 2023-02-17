@@ -1,0 +1,51 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Add New Artist</h1>
+        </div>
+    </section>
+
+
+    <style>
+        .form-group,#submit{
+            margin-left:150px;
+        }
+        #name{
+            padding-top: 10px;
+        }
+    </style>
+
+    <div class="table table-info table-striped table-hover table-bordered border-success" id="containerId">
+        <div class="row">
+            <div class="col-md-5">
+                <form action="/artists/addArtist" method="POST">
+                    <div class="form-group">
+                        <label for="name">Artist Name</label>
+                        <input type="text"
+                               class="form-control"
+                               id="name"
+                               name="name"
+                               th:value="''"
+                               required
+                               placeholder="Enter Artist name">
+                    </div>
+                    <div class="form-group">
+                        <label for="url">Url</label>
+                        <input type="text"
+                               class="form-control"
+                               id="url"
+                               name="url"
+                               th:value="''"
+                               placeholder="Url">
+                    </div>
+
+
+                    <button id="submit" type="submit" class="btn btn-info">Submit</button>
+                    <a type="button" class="btn btn-light" id="back" href="/artists">Back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</th:block>

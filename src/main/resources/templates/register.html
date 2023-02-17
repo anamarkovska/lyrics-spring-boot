@@ -1,0 +1,67 @@
+
+<style>
+    p,#submit,#rolaA,#roleU,#login{
+        margin-left: 280px;
+        margin-right: 300px;
+        margin-bottom: 10px;
+    }
+    #register{
+        margin-left: 280px;
+        font-family: "Arial Black";
+        font-style: italic;
+        margin-top: 35px;
+    }
+    #containerid{
+        margin-top: 20px;
+    }
+
+</style>
+
+
+<div class="container">
+    <h1 th:if="${hasError}" th:text="${error}"></h1>
+</div>
+<div class="table table-secondary table-striped table-hover table-bordered border-success" id="containerid">
+    <form class="form-signin mt-xl-5" method="post" action="/register">
+        <h2 class="form-signin-heading" id="register">Register</h2>
+        <p>
+            <label for="username" class="sr-only">Username</label>
+            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required=""
+                   autofocus="">
+        </p>
+        <p>
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                   required="">
+        </p>
+        <p>
+            <label for="repeatedPassword" class="sr-only">Repeat Password</label>
+            <input type="password" id="repeatedPassword" name="repeatedPassword" class="form-control"
+                   placeholder="Repeat Password" required="">
+        </p>
+        <p>
+            <label for="name" class="sr-only">Name</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Name" required="" autofocus="">
+        </p>
+        <p>
+            <label for="surname" class="sr-only">Surname</label>
+            <input type="text" id="surname" name="surname" class="form-control" placeholder="Surname" required=""
+                   autofocus="">
+        </p>
+        <p>
+        <div class="form-check form-check-inline" id="rolaA">
+            <input class="form-check-input" name="role" type="radio" id="ROLE_ADMIN" value="ROLE_ADMIN">
+            <label class="form-check-label" for="ROLE_ADMIN">ROLE_ADMIN</label>
+        </div>
+        <div class="form-check form-check-inline" id="roleU">
+            <input class="form-check-input" name="role"  type="radio" id="ROLE_USER" value="ROLE_USER">
+            <label class="form-check-label" for="ROLE_USER">ROLE_USER</label>
+        </div>
+        </p>
+        <button id="submit" class="btn btn-sm btn-info" type="submit">Sign up</button>
+    </form>
+    <div class="alert alert-success alert-dismissible fade show" id="login" role="alert">
+        <h4 class="alert-heading">Not Registered Yet?</h4>
+        Already have an account? Login <a href="/login" class="alert-link">here</a>
+    </div>
+</div>

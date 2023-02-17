@@ -1,0 +1,42 @@
+<div xmlns:th="http://www.thymeleaf.org">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">MUSIC</h1>
+            <h3 class="jumbotron-heading" th:text="${artist}"></h3>
+            <h3 class="jumbotron-heading" th:text="${song.name}"></h3>
+            <h4 class="jumbotron-heading">Lyrics</h4>
+        </div>
+    </section>
+
+
+    <style>
+
+        #containerId{
+            background: #d1d2d4;
+            padding-left: 340px;
+        }
+    </style>
+
+    <div class="container mb-20" id="containerId">
+        <div class="row">
+            <div class="col-20">
+                <div style="text-align:center">
+                    <table>
+                        <thead>
+                        </thead>
+                        <tbody>
+                                <tr th:each="song:${song.getLyrics().split(',')}"  class="item">
+                                    <td>
+                                       <a style="white-space: pre" th:text="${song}" th:align="center"> </a>
+                                    </td>
+                               </tr>
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

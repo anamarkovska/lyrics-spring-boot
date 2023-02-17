@@ -1,0 +1,66 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Add New Album</h1>
+        </div>
+    </section>
+
+    <style>
+        .form-group,#submit,#artist{
+            margin-left:150px;
+        }
+    </style>
+
+    <div class="table table-info table-striped table-hover table-bordered border-success">
+        <div class="row">
+            <div class="col-md-5">
+                <form th:action="@{'/albums/add-song'}" th:method="POST">
+                    <!--          <input id="id" type="hidden" name="id" th:value="(${song} != null ? ${song.getId()} : '')">-->
+                    <div class="form-group">
+                        <label for="name">Album Name</label>
+                        <input type="text"
+                               class="form-control"
+                               id="name"
+                               name="name"
+                               th:value="''"
+                               required
+                               placeholder="Album Name">
+                    </div>
+
+                    <div id="artist">
+                        <label>Artist</label><br/>
+                        <select id="f4" name="artistId" class="form-control">
+                            <!-- For each type you should have one <option> like below  -->
+                            <option th:each="a: ${artists}" th:value="${a.getId()}" th:text="${a.getName()}" > </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="url">Url</label>
+                        <input type="text"
+                               class="form-control"
+                               id="url"
+                               name="url"
+                               th:value="''"
+                               placeholder="Photo Url">
+                    </div>
+                    <div class="form-group">
+                        <label for="year">Release Year</label>
+                        <input type="text"
+                               class="form-control"
+                               id="year"
+                               name="year"
+                               th:value="''"
+                               placeholder="Release Year">
+                    </div>
+
+
+                    <button id="submit" type="submit" class="btn btn-info">Submit</button>
+                    <a type="button" class="btn btn-light" th:href="@{'/albums'}">Back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</th:block>
